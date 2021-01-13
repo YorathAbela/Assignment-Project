@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ObstacleCollisionHandler : MonoBehaviour
 {
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter(Collider other)
     {
         Debug.Log("Ball hit an Obstacle");
         //reload the scene when ball hits an obstacle
