@@ -6,8 +6,7 @@ public class BallController : MonoBehaviour
 {
 
     private bool ignoreNextCollision;
-
-    public Rigidbody2D rb;
+    public Rigidbody rb;
 
 
     // Start is called before the first frame update
@@ -16,11 +15,12 @@ public class BallController : MonoBehaviour
         
     }
 
-     private void OnCollisionEnter2D(Collision2D other) {
-        
+    private void OnCollisionEnter(Collision collision) {
+
         Debug.Log("Ball touched something");
-        rb.velocity = Vector2.zero;
-        rb.AddForce(Vector2.up, ForceMode2D.Impulse);
+
+        rb.velocity = Vector3.zero;
+        rb.AddForce(Vector3.up, ForceMode.Impulse);
     }
 
     // Update is called once per frame
