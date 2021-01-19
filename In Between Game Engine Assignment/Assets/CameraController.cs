@@ -9,7 +9,6 @@ public class CameraController : MonoBehaviour
 
     // Awake method starts when camera Controller awakes
     void Awake () {
-        Debug.Log("Awake was called");
         offset = transform.position.y - target.transform.position.y;
     }
 
