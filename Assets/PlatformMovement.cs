@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlatformMovement : MonoBehaviour
 {
+    [SerializeField]
     public float speed = 10f;
     public Vector3 targetPos;
     public bool isMoving;
@@ -14,42 +15,50 @@ public class PlatformMovement : MonoBehaviour
     void Start()
     {
         
-        targetPos = transform.position;
-        isMoving = false;
+        // targetPos = transform.position;
+        // isMoving = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButton(MOUSE)) {
+        // if(Input.GetMouseButton(MOUSE)) {
             
-            SetTargetPosition();
+        //     SetTargetPosition();
+        // }
+        // if(isMoving) {
+
+        //    MoveObject();
+        // }
+        if(Input.GetKey(KeyCode.LeftArrow))
+        {
+            transform.Translate(Vector3.left * Time.deltaTime * speed);
+        }        
+        else if(Input.GetKey(KeyCode.RightArrow))
+        {
+            transform.Translate(Vector3.right * Time.deltaTime * speed);
         }
-        if(isMoving) {
-
-           MoveObject();
-        }
     }
 
-    void SetTargetPosition() {
+    // void SetTargetPosition() {
 
-        Plane plane = new Plane (Vector3.up,transform.position);
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        float point = 0f;
-        if(plane.Raycast(ray, out point ))
-        targetPos = ray.GetPoint (point);
+    //     Plane plane = new Plane (Vector3.up,transform.position);
+    //     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+    //     float point = 0f;
+    //     if(plane.Raycast(ray, out point ))
+    //     targetPos = ray.GetPoint (point);
 
-        isMoving = true;
-    }
+    //     isMoving = true;
+    // }
 
-    void MoveObject () {
+    // void MoveObject () {
 
-        transform.LookAt (targetPos);
-        transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
+    //     transform.LookAt (targetPos);
+    //     transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
 
-        if (transform.position == targetPos)
-        isMoving = false;
-        Debug.DrawLine (transform.position, targetPos, Color.red);
-    }
+    //     if (transform.position == targetPos)
+    //     isMoving = false;
+    //     Debug.DrawLine (transform.position, targetPos, Color.red);
+    // }
 
 }
