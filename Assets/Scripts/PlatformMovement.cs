@@ -9,6 +9,8 @@ public class PlatformMovement : MonoBehaviour
     public Vector3 targetPos;
     public bool isMoving;
     const int MOUSE = 0;
+    [SerializeField]
+    private GameObject _mainCamera;
     // Use this for initialization1
 
     // Start is called before the first frame update
@@ -37,6 +39,11 @@ public class PlatformMovement : MonoBehaviour
         else if(Input.GetKey(KeyCode.RightArrow))
         {
             transform.Translate(Vector3.right * Time.deltaTime * speed);
+        }
+
+        if(transform.position.y > _mainCamera.transform.position.y + 6)
+        {
+            transform.position = new Vector3(transform.position.x,transform.position.y - 12,transform.position.z);
         }
     }
 

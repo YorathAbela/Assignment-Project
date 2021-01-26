@@ -9,7 +9,8 @@ public class GameManager : MonoBehaviour
 
     public int currentStage = 0;
 
-    public static GameManager singleton; 
+    public static GameManager singleton;
+    public GameObject deathMenu;
 
 
 
@@ -24,7 +25,6 @@ public class GameManager : MonoBehaviour
 
         best = PlayerPrefs.GetInt("Highscore");
 
-        
     }
 
     public void NextLevel() {
@@ -32,7 +32,9 @@ public class GameManager : MonoBehaviour
     }
         
     public void RestartLevel() {
-
+        Debug.Log("Game Over");
+        deathMenu.SetActive(true);
+        //singleton.score = 0;
     }
 
     public void AddScore(int scoreToAdd){
@@ -40,7 +42,6 @@ public class GameManager : MonoBehaviour
         if(score > best){
             best = score;
             PlayerPrefs.SetInt("Highscore", score);
-
         }
     }
 }

@@ -8,7 +8,9 @@ public class ObstacleCollisionHandler : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Ball hit an Obstacle");
-        //reload the scene when ball hits an obstacle
-        SceneManager.LoadScene(0);
+        //Show death screen when ball hits obstacle
+        //Show button to reload scene
+        //SceneManager.LoadScene(0); 
+        GameManager.singleton.RestartLevel();
     }
 }

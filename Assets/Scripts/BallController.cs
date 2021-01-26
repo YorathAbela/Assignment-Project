@@ -7,12 +7,13 @@ public class BallController : MonoBehaviour
 
     private bool ignoreNextCollision;
     public Rigidbody rb;
+    private Vector3 startPos;
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        startPos = transform.position;
     }
 
     private void OnCollisionEnter(Collision collision) {
@@ -25,13 +26,13 @@ public class BallController : MonoBehaviour
         ignoreNextCollision = true;
         Invoke ("AllowCollision", .2f);
 
-        GameManager.singleton.AddScore(1);
-        Debug.Log(GameManager.singleton.score);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void AllowCollision(){
+        ignoreNextCollision = false;
+    }
+
+    public void ResetBall(){
+        transform.position = startPos;
     }
 }

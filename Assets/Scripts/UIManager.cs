@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour 
 {
 
- [SerializeField]private Text textScore;
- [SerializeField]private Text textBest; 
+    [SerializeField]private Text textScore;
+    [SerializeField]private Text textBest; 
 
 
     
