@@ -5,13 +5,14 @@ using UnityEngine;
 public class PlatformMovement : MonoBehaviour
 {
     [SerializeField]
-    public float speed = 10f;
+    public float speed = 11f;
     public Vector3 targetPos;
     public bool isMoving;
     const int MOUSE = 0;
     [SerializeField]
     private GameObject _mainCamera;
     // Use this for initialization1
+    private bool _randomizeHeight = true;
 
     // Start is called before the first frame update
     void Start()
@@ -43,29 +44,17 @@ public class PlatformMovement : MonoBehaviour
 
         if(transform.position.y > _mainCamera.transform.position.y + 6)
         {
-            transform.position = new Vector3(transform.position.x,transform.position.y - 12,transform.position.z);
+            if(_randomizeHeight)
+            {
+                float randomXPosition = Random.Range(-6f,6f);
+            Debug.Log("The random position is: " + randomXPosition);
+            transform.position = new Vector3(randomXPosition,transform.position.y - 15,transform.position.z);
+            }
+            else
+            {
+                transform.position = new Vector3(transform.position.x,transform.position.y - 15,transform.position.z);
+            }
         }
     }
-
-    // void SetTargetPosition() {
-
-    //     Plane plane = new Plane (Vector3.up,transform.position);
-    //     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-    //     float point = 0f;
-    //     if(plane.Raycast(ray, out point ))
-    //     targetPos = ray.GetPoint (point);
-
-    //     isMoving = true;
-    // }
-
-    // void MoveObject () {
-
-    //     transform.LookAt (targetPos);
-    //     transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
-
-    //     if (transform.position == targetPos)
-    //     isMoving = false;
-    //     Debug.DrawLine (transform.position, targetPos, Color.red);
-    // }
 
 }

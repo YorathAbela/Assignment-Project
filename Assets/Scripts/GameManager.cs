@@ -34,7 +34,6 @@ public class GameManager : MonoBehaviour
     public void RestartLevel() {
         Debug.Log("Game Over");
         deathMenu.SetActive(true);
-        //singleton.score = 0;
     }
 
     public void AddScore(int scoreToAdd){
