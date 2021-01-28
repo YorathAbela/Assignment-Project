@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class GameManager : MonoBehaviour
     public static GameManager singleton;
     public GameObject deathMenu;
 
-
+      public Text finalscore; 
 
 
     // Start is called before the first frame update
@@ -33,6 +34,7 @@ public class GameManager : MonoBehaviour
         
     public void RestartLevel() {
         Debug.Log("Game Over");
+        finalscore.text = score.ToString ();
         deathMenu.SetActive(true);
     }
 
