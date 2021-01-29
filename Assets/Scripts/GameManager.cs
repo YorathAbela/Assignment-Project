@@ -13,7 +13,10 @@ public class GameManager : MonoBehaviour
     public static GameManager singleton;
     public GameObject deathMenu;
 
-      public Text finalscore; 
+    public Text finalscore;
+
+    public AudioSource audiosource;
+    public AudioClip SoundToPlay;
 
 
     // Start is called before the first frame update
@@ -28,12 +31,19 @@ public class GameManager : MonoBehaviour
 
     }
 
+    void Start()
+    {
+        audiosource = GetComponent<AudioSource>();
+    }
+
     public void NextLevel() {
 
     }
         
     public void RestartLevel() {
         Debug.Log("Game Over");
+        Destroy(GameObject.FindWithTag("Ball"));
+        audiosource.PlayOneShot(SoundToPlay);
         finalscore.text = score.ToString ();
         deathMenu.SetActive(true);
     }

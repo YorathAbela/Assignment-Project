@@ -7,6 +7,7 @@ public class ObstacleCollisionHandler : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
+    
         GameManager.singleton.RestartLevel();
     }
 }
